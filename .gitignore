@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#Gedit temp files
+*~
+
+#Vim temp files
+*.swp
+
