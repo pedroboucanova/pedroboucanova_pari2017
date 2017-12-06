@@ -58,7 +58,7 @@ void on_drawingarea1_scroll_event(GtkWidget *widget, GdkEventScroll *event, gpoi
 
                 case GDK_SCROLL_LEFT:
                 case GDK_SCROLL_RIGHT:
-                case GDK_SCROLL_SMOOTH:
+               // case GDK_SCROLL_SMOOTH:
                         break;
         }
         gtk_widget_queue_draw(widget); //force redrawing of area
@@ -69,8 +69,8 @@ void on_drawingarea1_motion_notify_event(GtkWidget *widget, GdkEventMotion *even
 {
         if( event->state & GDK_BUTTON3_MASK) //button 3 move text
         {
-                xoffG = event->x;  /*mouse coordinate x */
-                yoffG = event->y;  /*mouse coordinate y */
+                xoffG = event->x;  
+                yoffG = event->y;
         
             
         
@@ -167,3 +167,33 @@ gboolean p_ForceRefreshDA(gpointer user_data)
 
         return TRUE;  //continue running
 }
+
+
+//================================================================================
+//================================================================================
+//================================================================================
+
+gboolean pari_UpdateImageAreas(gpointer data)
+{
+        //generate an expose event (draw event) on drawingarea1
+        GtkWidget *da1 = GTK_WIDGET(gtk_builder_get_object(builderG, "drawingarea1"));
+        gtk_widget_queue_draw(da1);
+        return TRUE;
+}
+
+
+gboolean on_drawingarea1_expose_event(GtkWidget * widget, GdkEvent * event, gpointer user_data)
+{
+        pari_PerformImageAcquisition(captureG);             //acquire new image
+        pari_ProcessUserOperations(src_imageG, dst_imageG); // Perform here the openCV transformations
+
+        //update the drawing area displays
+        pari_RefreshDrawingArea("drawingarea1", src_imageG);
+        pari_RefreshDrawingArea("drawingarea2", dst_imageG);
+        
+               return TRUE;
+}
+ 
+ 
+
+

@@ -1,0 +1,4 @@
+/home/pedro/Dropbox/PARI/github/pedroboucanova_pari2017/build/CMakeFiles/rebuild_cache.dir
+/home/pedro/Dropbox/PARI/github/pedroboucanova_pari2017/build/CMakeFiles/cpfiles.dir
+/home/pedro/Dropbox/PARI/github/pedroboucanova_pari2017/build/CMakeFiles/edit_cache.dir
+/home/pedro/Dropbox/PARI/github/pedroboucanova_pari2017/build/CMakeFiles/myf.dir
